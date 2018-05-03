@@ -1,0 +1,23 @@
+<style>
+.t{
+padding-top:140px; 
+}
+</style>
+<div class="t">
+<div class="container" ><br>
+	<div class="row" style="width:200px,margin-left:100px">
+		<div class="panel panel-info">
+			<div class="panel-heading"><font size="10" color="black">Blog Posts</font></div>
+			<div class="panel-body">
+				<div ng-repeat="blog in blogsApproved"><br>
+					<font color="black" size="8"><a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a></font><br><br>
+					<font size="4"><b>Posted On : </b></font> <font size="3">{{blog.postedOn | date:'medium'}}</font><br>
+					<font size="4"><b>Posted By : </b></font> <font size="3">{{blog.postedBy.firstname}} &nbsp;{{blog.postedBy.lastname}}</font>
+					<img src="http://localhost:8080/proj2middle/getimage/{{blog.postedBy.email}}" height="90px" width="90px" style="margin-left:710px" >
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

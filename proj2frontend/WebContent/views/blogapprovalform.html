@@ -1,0 +1,36 @@
+<style>
+.tu{
+margin-top:50px;
+margin-left:100px;
+margin-right:100px;
+}
+
+.t{
+padding-top:100px; 
+}
+</style>
+<div class="container">
+<div class="tu" >
+<div class="t">
+<div class="panel panel-info">
+<div class="panel-heading">
+<font size="6"><i>{{blog.blogTitle}}</i><br></font><br>
+<font size="4"><b>Posted On: </b> {{blog.postedOn | date:'medium'}}<br>
+<b>Posted By: </b> {{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}</font><br>
+</div>
+<div class="panel-body">
+<font size="4"><p ng-bind-html="content"></p></font>
+</div>
+</div>
+<!-- Approve -update blogpost set approved=1 where id=? -->
+<!-- Reject -delete blogpost where id=? -->
+<button type="button" class="btn btn-primary" ng-click="approve(blog)" ng-hide="rejectionTxt">Approve</button> &nbsp; 
+<button type="button" class="btn btn-warning" ng-click="showRejectionTxt()" ng-hide="rejectionTxt">Reject</button><br>
+<div ng-show="rejectionTxt">
+<h3><i>Rejection Reason</i></h3>
+<textarea ng-model="rejectionReason" rows="3" cols="50"></textarea>
+<button type="button" class="btn btn-warning" ng-click="reject(blog)">Submit</button>
+</div>
+</div>
+</div>
+</div>

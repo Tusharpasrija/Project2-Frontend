@@ -1,0 +1,38 @@
+<style>
+.t{
+padding-top:130px; 
+}
+
+</style>
+<div class="t">
+<div class="container-fluid"style="margin-left:300px"><br>
+	<div class="panel panel-info" style="width:1000px" >
+		<div class="panel-heading">
+			<font size="7"><b><i>{{blog.blogTitle}}</i></b></font><br> <font size="4"><b>Posted
+				On : </b> {{blog.postedOn | date:'medium'}}<br> <b>Posted By :
+			</b> {{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}</font><br><br>
+			<img src="http://localhost:8080/proj2middle/getimage/{{blog.postedBy.email}}" height="100px" width="100px" style="margin-left:100px" >
+		</div>
+		<div class="panel-body">
+			<h3><p ng-bind-html="content"></p></h3>
+			<br>
+		</div>
+	</div>
+	<div>
+		<a><span class="glyphicon glyphicon-thumbs-up"
+			ng-class="isLiked?'liked':'default'" ng-click="updateLikes(blog.id)"></span></a>
+		{{blog.likes}} likes
+	</div>
+	<div>
+	{{exceptionMessage.message}}
+	<textarea rows="3" cols="50" ng-model="commentTxt" ></textarea>
+	<button type="button" class="btn btn-primary" ng-click="addComment(blog,commentTxt)">Post Comment</button><br>
+	<a ng-click="onShowComments()">{{comments.length}} comments</a><br>
+	<ul style="list-style:none" ng-show="showComments" >
+	<li ng-repeat="comment in comments | orderBy:'-commentedOn'">
+	{{comment.commentTxt}}&nbsp;<b>Commented by: </b>{{comment.commentedBy.firstname}}&nbsp;<b>Commented on: </b> {{comment.commentedOn | date:'medium'}}
+	</li>
+	</ul>
+	</div>
+</div>
+</div>

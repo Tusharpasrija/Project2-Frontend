@@ -1,0 +1,19 @@
+<style>
+.t{
+padding-top:140px; 
+}
+</style>
+<div class="t">
+<div align="center">
+<font size="7"><i>User Details</i></font></div><br><br>
+<span ng-if="users.length==0"><h1><i>No Users Found</i></h1></span>
+<ul style="list-style:none">
+<li ng-repeat="user in users">
+<h2><i><b>Name</b></i> : {{user.firstname}}&nbsp;{{user.lastname}} <img src="http://localhost:8080/proj2middle/getimage/{{user.email}}" height="100px" width="100px" style="margin-left:200px"></h2>
+<h2><i><b>Email</b></i> : {{user.email}}</h2>
+<h2><i><b>Phone No</b></i> : {{user.phonenumber}}</h2>
+
+<hr>
+</li><br><br>
+</ul>
+</div>

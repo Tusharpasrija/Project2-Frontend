@@ -1,0 +1,51 @@
+
+<style>
+.t{
+padding-top:80px; 
+}
+
+</style>
+<div class="t">
+<div class="container">
+<div align="center">
+<font size="7"><i>Registration Form</i></font></div>
+<form style="margin-left:20px">
+
+<div class="form-group">
+<h3>Enter Email:</h3> 
+<input type="email" ng-model="user.email"  class="form-control" placeholder="Enter Email" required/>
+<font size="4"><i>{{error.message}}</i></font>
+</div>
+
+<div class="form-group">
+<h3>Enter Password:</h3> 
+<input type="password" ng-model="user.password"  class="form-control" placeholder="Enter Password" required/>
+</div>
+
+<div class="form-group">
+<h3>Enter First Name:</h3> 
+<input type="text" ng-model="user.firstname"  class="form-control" placeholder="Enter Firstname" required/>
+</div>
+
+<div class="form-group">
+<h3>Enter Last Name:</h3> 
+<input type="text" ng-model="user.lastname"  class="form-control" placeholder="Enter Lastname" required/>
+</div>
+
+<div class="form-group">
+<h3>Enter Phone No:</h3> 
+<input type="text" ng-model="user.phonenumber"  class="form-control" placeholder="Enter Phone No." required/>
+</div>
+
+<div class="form-group" >
+<h4>Select Role</h4>
+<select ng-model="user.role">
+<option value="STUDENT">Student
+<option value="EMPLOYEE">Employee
+<option value="ALUMINI">Alumini
+</select>
+</div>
+<font size="3"><i>By clicking Create Account, you agree to our Terms and confirm that you have read our Data Policy, including our Cookie Use Policy.</i></font><br>
+<input type="submit" class="btn btn-primary" ng-click="registerUser(user)" value="Register" >
+</form>
+</div></div>

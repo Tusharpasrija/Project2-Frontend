@@ -1,0 +1,95 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
+
+<style>
+.t{
+padding-top:50px;
+}
+
+
+#part2{
+height: 60px;
+padding-top: 20px;
+}
+#part2 h2 {
+width: 100%; 
+text-align: center; 
+border-bottom: 1px solid #000; 
+line-height: 0.1em;
+margin: 10px 0 20px; 
+} 
+
+#part2 h2 span { 
+background:#fff; 
+padding:0 10px; 
+}
+
+.btn-responsive{
+word-wrap: break-word;
+ white-space: normal !important;
+}
+
+#brand{
+padding-top: 50px;
+height:100px;
+}
+
+#instructions{
+height: 150px;
+padding-top: 25px;
+}
+#gsignin{
+height: 60px;
+padding-top: 20px;
+}   
+
+#signup{
+height: 60px;
+padding-top: 20px;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div class="t">
+<div class="container"><br><br><br><br>
+<img id="re"src="resources/images/ssd.png" width="200px" height=200px" style="margin-left:460px"><br><br>
+</div>
+<div class="container" >
+<span class="error"><i><font size="4" color="red">{{error.message}}</font></i></span>
+<span class="msg"><i><font size="4" color="blue">{{message}}</font></i></span>
+
+<form class="form-horizontal"style="margin-top:5px">
+<div class="form-group">
+<label class="control-label col-sm-4" for="email">Email:</label>
+<div class="col-sm-4 col-offset-4 input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="user.email" name="email" required>
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-4" for="pwd">Password:</label>
+<div class="col-sm-4 col-offset-4 input-group">          
+<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span><input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password" name="pwd" required>
+</div>
+</div>
+
+<div class="form-group">        
+<div class="col-sm-12 text-center">
+<button type="submit" class="btn btn-default" ng-click="login(user)" ><i><font size="3">Sign In</font></i></button>
+</div>
+</div>
+</form>
+</div>
+
+
+
+</div>
+</body>
+</html>

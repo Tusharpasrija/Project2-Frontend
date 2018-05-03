@@ -1,0 +1,51 @@
+<style>
+.t{
+padding-top:120px; 
+}
+</style>
+<div class="t">
+{{error.message}}
+<div class="container">
+<div align="center">
+<font size="7"><i>Update User</i></font>
+</div>
+<form style="margin-left:20px">
+
+<div class="form-group">
+<h3>Enter Email:</h3> 
+<input type="email" ng-model="user.email" disabled class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter Password:</h3> 
+<input type="password" ng-model="user.password"  class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter First Name:</h3> 
+<input type="text" ng-model="user.firstname"  class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter Last Name:</h3> 
+<input type="text" ng-model="user.lastname"  class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter Phone No:</h3> 
+<input type="text" ng-model="user.phonenumber"  class="form-control">
+</div>
+
+<div class="form-group">
+<h4>Select Role</h4>
+<select ng-model="user.role">
+<option value="STUDENT">Student
+<option value="EMPLOYEE">Employee
+<option value="ALUMINI">Alumini
+</select>
+</div>
+
+<input type="submit" class="btn btn-primary" ng-click="updateUser(user)" value="Edit Profile">
+</form>
+</div>
+</div>

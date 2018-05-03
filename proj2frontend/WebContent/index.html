@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="resources/css/login.css" rel="stylesheet">
+<link href="resources/css/notification.css" rel="stylesheet">
+<link href="assets/common/portfolio.css" rel="stylesheet">
+<style>
+
+
+
+.dropdown:hover>.dropdown-menu {
+ display: block;
+}
+
+.dropdown-menu>li>a {
+color: #909090;
+background-color: transparent;
+font-weight: bold;
+font-size: 16px;
+font-style: italic;
+text-align: right;
+font-weight: bold;
+}
+
+
+dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    color: #404040;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+.dropdown-menu>li{
+background-color: transparent;
+}
+.dropdown-menu{
+background-color: transparent;
+}
+
+
+li>i{
+text-decoration: none;
+color: darkgray;
+background-color: transparent;
+}
+
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+	color: #404040;
+}
+
+.nav>li>a{
+color: #909090;
+font-weight: bold;
+font-size: 20px;
+
+}
+
+
+</style>
+</head>
+<body ng-app="app">
+
+
+
+    <nav  class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <button type="button"  class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+                 <a class="navbar-brand" ><img src="resources/images/logo2.png"></a>	
+			</div>
+			<div class="collapse navbar-collapse" id="collapse-example">
+			<ul class="nav navbar-nav navbar-right">
+			<li><a href="#/register" ng-show="loggedInUser.firstname==undefined" style="margin-top:8px">Sign Up</a></li>
+			<li><a href="#/login" ng-show="loggedInUser.firstname==undefined" style="margin-top:8px">Sign In</a></li>
+			<li><a href="#/uploadprofilepic"><img src="http://localhost:8080/proj2middle/getimage/{{loggedInUser.email}}"  ng-show="loggedInUser.firstname!=undefined" alt="Upload Profilepic"  height="70px" width="70px" class="img-circle" ></a></li>
+			<li><a class="navbar-brand"  ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Hi {{loggedInUser.firstname}}&nbsp;{{loggedInUser.lastname}}</a></li>
+			<li class="dropdown">
+			<a  class="navbar-brand" href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname" style="margin-top:22px">
+			<span class="glyphicon glyphicon-globe">
+			<span class="rw-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span></span></a>
+			<ul class="dropdown-menu">
+			<span class="dropdown-content">
+			<li ng-repeat="notification in notifications">
+			<a href="#/getnotification/{{notification.id}}">Blog Titled <i><b>{{notification.blogTitle}}</b></i> approval status is updated</a>
+			<hr>
+			</li>
+			</span>
+			</ul>
+			</li>
+			<li><a href="#/edituserprofile" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Edit User Profile</a></li>		
+			
+			<li class="dropdown"><a class="navbar-brand" href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Job<b class="caret"></b></a> 
+			<ul class="dropdown-menu">
+			<li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'" ">Add Job</a> 
+			<li><a href="#/alljobs" >Get All Jobs</a></li>
+			</li></ul>
+			
+			<li class="dropdown"><a class="navbar-brand" href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Blog<b class="caret"></b></a> 
+			<ul class="dropdown-menu">
+			<li><a href="#/addblog" >Add Blog</a> </li>
+			<li><a href="#/blogsnotapproved" ng-show="loggedInUser.role=='ADMIN'" >Blogs Waiting for approval</a></li>
+			<li><a href="#/blogsapproved" >Blogs</a></li>
+			</li></ul>
+			
+			
+			<li class="dropdown"><a class="navbar-brand" href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Friend<b class="caret"></b></a> 
+			<ul class="dropdown-menu">
+			<li><a href="#/suggestedusers" >Suggested Users</a></li>
+			<li><a href="#/pendingrequests" >Pending Requests </a></li>
+			<li><a href="#/friends" >Friends </a></li>
+			</li></ul>
+			
+			
+			
+			
+			<li><a href="#/chat" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Chat Room</a></li> 
+				
+			
+			<li><input type="text" placeholder="Search user" class="navbar search" ng-model="user" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">
+			<a href="#/searchuser" class="btn navbar-btn pull-right" type="button" ng-show="loggedInUser.firstname!=undefined" ng-click="searchUser(user)" style="margin-top:22px">
+			<i class="fa fa-search"></i></a>
+			</li>
+				
+			
+			<li><a class="navbar-brand" href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined" style="margin-top:22px">Logout</a></li>
+	</ul>
+</div>
+</div>
+	</nav>
+	
+
+<div ng-view></div>
+
+
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="controllers/usercontroller.js"></script>
+<script type="text/javascript" src="services/userservice.js"></script>
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+<script type="text/javascript" src="services/jobservice.js"></script>
+<script type="text/javascript" src="controllers/blogcontroller.js"></script>
+<script type="text/javascript" src="controllers/blogdetailscontroller.js"></script>
+<script type="text/javascript" src="services/blogservice.js"></script>
+<script type="text/javascript" src="controllers/notificationcontroller.js"></script>
+<script type="text/javascript" src="services/notificationservice.js"></script>
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="js/stomp/dist/stomp.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+<script type="text/javascript" src="services/chatservice.js"></script>
+
+</html>

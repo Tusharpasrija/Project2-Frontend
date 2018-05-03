@@ -1,0 +1,23 @@
+<style>
+.t{
+padding-top:150px; 
+}
+</style>
+<div class="t">
+<span ng-show="blogsWaitingForApproval.length==0"><h1><i>No Blogs Waiting For Approval</i></h1></span>
+<div class="container">
+	<div class="row" style="width: 600px">
+		<div ng-repeat="blog in blogsWaitingForApproval">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<a href="#/getblognotapproved/{{blog.id}}"><font size="7"><b><i>{{blog.blogTitle}}</i></b></font></a>
+				</div>
+				<div class="panel-body">
+					<font size="5"><b>Posted On: </b> {{blog.postedOn | date:'medium'}}<br></font> 
+					<font size="5"><b>Posted By: </b>{{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}</font>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

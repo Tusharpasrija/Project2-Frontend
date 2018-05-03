@@ -1,0 +1,14 @@
+<style>
+.t{
+padding-top:120px; 
+}
+</style>
+<div class="t">
+<div align="center">
+<font size="8"><b><i>Blog Post Status</i></b></font><br>
+</div>
+<div class="container-fluid" style="margin-left:30px">
+<h2>BlogPost  titled <b>{{notification.blogTitle}}</b> is {{notification.approvalStatus}} 
+<div ng-show="notification.approvalStatus=='Rejected'">For the reason '{{notification.rejectionReason}}'</div></h2>
+</div>
+</div>
